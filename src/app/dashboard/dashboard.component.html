@@ -1,0 +1,44 @@
+<div>
+
+    <p>
+        dashboard works!
+    </p>
+    <!-- <div>List: {{ SomeResponse["1"].name }}</div> -->
+    <!-- <div>{{ light.name }}</div> -->
+    <!-- *ngFor="let light of objectKeys(items) -->
+    <!-- <a *ngFor="let light of lights" class="col-1-4"> -->
+    <a *ngFor="let light of lights | keyvalue" class="col-1-4">
+        <div class="module hero">
+            <h4>name: {{light.value.name}}</h4>
+            <h4>on: {{light.value.state["on"]}}</h4>
+            <div (click)="lightOn(light.key)">Turn on</div>
+            <div (click)="lightOff(light.key)">Turn off</div>
+        </div>
+    </a>
+    <div>
+        <span>Lights count: </span><span>{{ lights.length }}</span>
+    </div>
+
+    <div *ngIf="!!lit">
+        <div>
+            <span>Name: </span><span>{{ lit.name }}</span>
+        </div>
+        <div>
+            <span>Type: </span><span>{{ lit.type }}</span>
+        </div>
+        <div>
+            <span>State: </span><span>{{ lit.state["on"] }}</span>
+        </div>
+        <div>
+            <span>Reachable: </span><span>{{ lit.state.reachable }}</span>
+        </div>
+    </div>
+    <div (click)="lightOff()">
+        Light off
+    </div>
+    <mat-radio-group>
+        <mat-radio-button value="1">Option 1</mat-radio-button>
+        <mat-radio-button value="2">Option 2</mat-radio-button>
+    </mat-radio-group>
+
+</div>
